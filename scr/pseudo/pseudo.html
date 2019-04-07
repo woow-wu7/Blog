@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="ico" rel="">
+</head>
+<style>
+.shockwav {
+  width: 400px;
+  height: 400px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wavButton {
+  width: 120px;
+  height: 50px;
+  background:coral;
+  border-radius: 4px;
+  line-height: 50px;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.wavButton:active::after {
+  height: 0;
+  width: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+  transition-duration: 0s;
+}
+.wavButton::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background:white;
+  opacity: 0;
+  transition: all .5s;
+}
+</style>
+<body>
+  <div class="pseudo">伪类和伪元素</div>
+  <p class="text">this is ::first-letter <br/> this is two row text</p>
+  <input type="text" placeholder="请输入文字" class="pl">
+  <div class="shockwav">
+    <div class="wavButton">触发冲击波</div>
+  </div>
+  <div>
+    <img src="../imgs/1.jpg" alt="imgx" title="imgx2" height="100" width="100">
+    <div title="div的内容" alt="dddd"></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    window.onload = function() {
+      const request = function({method, url, res}) {
+        const api = new XMLHttpRequest();
+        api.open(method, url, true);
+        api.setRequestHeader('Content-Type', 'application/json');
+        api.timeout = 5000;
+        api.responseType = 'text';
+        api.send();
+        api.onreadystatechange =  function() {
+          if ( this.readyState === 4 ) {
+            if ( this.status >= 200 && this.status < 300 || this.satus === 304) {
+              res(JSON.parse(this.responseText))
+            }
+          }
+        }
+      }
+      request({
+        method: 'GET',
+        url: 'http://image.baidu.com/channel/listjson?pn=0&rn=30&tag1=明星&tag2=全部&ie=utf8', // 需要跨域
+        res: (res) => {
+          console.log(res);
+        }
+      });
+    }
+  </script>
+</head>
+<body>
+
+</body>
+</html>
