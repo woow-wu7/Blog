@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div class="main">
+    <div class="child-a">
+      childA
+      <div class="grand-a" grand="a">grandChildren1</div>
+      <div class="grand-a" grand="b-two two">grandChildren2</div>
+    </div>
+    <div class="child-b">childB</div>
+    <div class="child-c">childC</div>
+    <div class="triangle"></div>
+  </div>
+  <style>
+    * {
+      margin: 2px 0;
+    }
+    .main div {
+      color: red;
+    }
+    .main > div {
+      color: rgb(32, 113, 218);
+    }
+    .child-a~div {
+      background: rgb(205, 238, 206);
+    }
+    .child-a+div {
+      color: rgb(247, 0, 255);
+    }
+    div[grand] {
+      border: 1px solid black;
+    }
+    div[grand~="two"] {
+      border: 10px solid black;
+    }
+    div[grand^="b"] {
+      border: 10px solid rgb(0, 255, 42);
+    }
+    .grand-a[grand|="a"] {
+      background: black;
+    }
+    .child-c {
+      margin-bottom: 40px;
+    }
+    .triangle {
+      height: 0;
+      width: 0;
+      border: 50px solid transparent;
+      border-top: 50px solid red;
+    }
+  </style>
+</body>
+</html>
