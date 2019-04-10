@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function Constructor(name) {
+      this.name = name;
+      return this;
+    }
+    Constructor.prototype.address = 'chongqing';
+    function _new() {
+      const obj = {};
+      // 等于 const obj = new Object()
+
+      const paramsConstructor = Array.prototype.shift.call(arguments);
+      // 等于 [].shift.call(arguments)
+      // 等于 Array.prototype.shift.apply(arguments) ---- 都能绑定this到arguments，并执行shift函数
+      // shift改变元素组，返回值是删除的值，即第一个参数
+      // shift后arguments被改变，arguments中就只剩下参数了
+      // 使用 arguments的好处是 可以传任意多个参数
+
+      obj.__proto__ = paramsConstructor.prototype;
+      // 将空对象的隐式原型指向构造函数的显示原型
+      // obj就可以访问构造函数原型上的属性
+
+      const res = paramsConstructor.apply(obj, arguments);
+      // 将构造函数中的this绑定到空对象上
+      // obj就可以访问到构造函数this对象上的属性
+      // 在一个函数a调用函数b，而函数b又带有参数时，使用apply和call避免无法直接传参
+      // apply的第二个参数，接受数组，但是类似数组的对象也可以，会转化为数组
+
+      return /Object/.test( ({}).toString.call(res) ) ? res : obj;
+      // 等于 return typeof res === 'object' ? res : obj;
+      // 如果返回的是对象，则返回该对象，否则返回obj即this所绑定的对象
+    }
+    const instanceObj = _new(Constructor, 'wang');
+    console.log(instanceObj.name);
+    console.log(instanceObj.address);
+  </script>
+</body>
+</html>
