@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/woow-wu/interview/issues"
   },
-  "homepage": "https://github.com/woow-wu/interview#readme"
+  "homepage": "https://github.com/woow-wu/interview#readme",
+  "dependencies": {
+    "react-redux": "^7.0.1",
+    "redux": "^4.0.1"
+  }
 }
