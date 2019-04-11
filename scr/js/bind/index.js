@@ -2,10 +2,10 @@ const obj = {
   name: 'woow-wu',
   age: 20,
 };
-function fn() {
+function fn(name, age) {
   return {
-    name: this.name,
-    age: this.age
+    name: name || this.name,
+    age: age || this.age,
   }
 };
 
@@ -43,5 +43,5 @@ Function.prototype._bind = function (obj) {
 
 }
 
-const res = fn._bind(obj, 'wang', 30);
+const res = fn._bind(obj, 'wang');
 console.log(res, '执行_bind函数后得到的返回值');

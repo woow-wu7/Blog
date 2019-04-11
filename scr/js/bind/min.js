@@ -2,16 +2,16 @@ const obj = {
   name: 'woow-wu',
   age: 20,
 };
-function fn() {
+function fn(name, age) {
   return {
-    name: this.name,
-    age: this.age,
+    name: name || this.name,
+    age: age || this.age,
   }
 }
 Function.prototype._call = function(context) {
   context = context ? context : window;
   context.fn = this;
-  const res = context.fn([...arguments].slice(1));
+  const res = context.fn(...[...arguments].slice(1));
   delete context.fn;
   return res;
 }
