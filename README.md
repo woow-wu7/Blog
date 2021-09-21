@@ -1,3 +1,5 @@
 # interview
-html/css/js
+- react vue
+- typescript html css js
+- ...
 
